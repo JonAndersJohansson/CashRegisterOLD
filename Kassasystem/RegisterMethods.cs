@@ -15,17 +15,9 @@ namespace Kassasystem
             while (!menuInput)
             {
                 Console.Clear();
-                
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("██╗  ██╗ ██████╗  ██████╗ ██████╗ ");
-                Console.WriteLine("██║ ██╔╝██╔═══██╗██╔═══██╗██╔══██╗");
-                Console.WriteLine("█████╔╝ ██║   ██║██║   ██║██████╔╝");
-                Console.WriteLine("██╔═██╗ ██║   ██║██║   ██║██╔═══╝ ");
-                Console.WriteLine("██║  ██╗╚██████╔╝╚██████╔╝██║     ");
-                Console.WriteLine("╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ®  ");
-                Console.WriteLine("      ~   Örnsköldsvik   ~");
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine();
+
+                MenuGraphics();
+
                 Console.WriteLine("KASSA");
                 Console.WriteLine("1. Ny kund");
                 Console.WriteLine("2. Administratörsverktyg");
@@ -59,8 +51,14 @@ namespace Kassasystem
             var products = producthandeling.Products;
             var cart = new Dictionary<int, int>();
 
+            //Console.Clear();
+            //MenuGraphics();
+
             while (true)
             {
+                Console.Clear();
+                MenuGraphics();
+
                 Console.WriteLine("kommandon:\n<productid> <antal>\nPAY\n");
                 string command = Console.ReadLine();
 
@@ -71,10 +69,38 @@ namespace Kassasystem
                 }
                 else
                 {
-                    InputHandeling.TakeCommand(command, cart, products);
+                    TakeCommand(command, cart, products);
+                    System.Threading.Thread.Sleep(1000);  // Pausar kort innan vi rensar
+                    continue;
                 }
             }
         }
+
+        public static void TakeCommand(string command, Dictionary<int, int> cart, List<Products> products)
+        {
+            var parts = command.Split(' ');
+            if (parts.Length == 2 && int.TryParse(parts[0], out int productId) && int.TryParse(parts[1], out int quantity))
+            {
+                Products product = products.FirstOrDefault(p => p.PLU == productId);
+                if (product != null)
+                {
+                    RegisterMethods.AddToCart(cart, productId, quantity);
+                    Console.WriteLine($"{quantity} x {product.Name} tillagd i varukorgen.");
+                    Console.Beep();
+                }
+                else
+                {
+                    Console.WriteLine("Produkt-ID hittades inte.");
+                    System.Threading.Thread.Sleep(1000);  // Pausar kort innan vi rensar
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ogiltigt kommando. Ange <produktid> <antal>.");
+                System.Threading.Thread.Sleep(1000);  // Pausar kort innan vi rensar
+            }
+        }
+
         public static void AddToCart(Dictionary<int, int> cart, int productId, int quantity)
         {
             if (cart.ContainsKey(productId))
@@ -104,6 +130,20 @@ namespace Kassasystem
             }
 
             Console.WriteLine($"Total: {total:C}");
+        }
+
+        public static void MenuGraphics()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("██╗  ██╗ ██████╗  ██████╗ ██████╗ ");
+            Console.WriteLine("██║ ██╔╝██╔═══██╗██╔═══██╗██╔══██╗");
+            Console.WriteLine("█████╔╝ ██║   ██║██║   ██║██████╔╝");
+            Console.WriteLine("██╔═██╗ ██║   ██║██║   ██║██╔═══╝ ");
+            Console.WriteLine("██║  ██╗╚██████╔╝╚██████╔╝██║     ");
+            Console.WriteLine("╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ®  ");
+            Console.WriteLine("      ~   Örnsköldsvik   ~");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine();
         }
     }
 

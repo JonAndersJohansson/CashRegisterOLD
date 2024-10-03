@@ -30,26 +30,8 @@ namespace Kassasystem
         //        return intInput;
         //    }
         //}
-        public static void TakeCommand(string command, Dictionary<int, int> cart, List<Products> products)
-        {
-            var parts = command.Split(' ');
-            if (parts.Length == 2 && int.TryParse(parts[0], out int productId) && int.TryParse(parts[1], out int quantity))
-            {
-                Products product = products.FirstOrDefault(p => p.PLU == productId);
-                if (product != null)
-                {
-                    RegisterMethods.AddToCart(cart, productId, quantity);
-                    Console.WriteLine($"{quantity} x {product.Name} tillagd i varukorgen.");
-                }
-                else
-                {
-                    Console.WriteLine("Produkt-ID hittades inte.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Ogiltigt kommando. Ange <produktid> <antal>.");
-            }
-        }
+        
+        
     }
+
 }
