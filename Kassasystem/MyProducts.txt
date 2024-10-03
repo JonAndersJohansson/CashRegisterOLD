@@ -1,0 +1,7 @@
+11 Jordgubbar 39,90 Styckpris
+22 Nutella 19,90 Styckpris
+33 Citron 4,90 Styckpris
+44 Bananer 9,90 Kilopris
+55 Grädde 15,90 Styckpris
+66 Choklad 9,90 Styckpris
+77 Apelsiner 29,90 Kilopris
