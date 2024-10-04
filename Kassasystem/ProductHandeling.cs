@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kassasystem
+namespace CashRegister
 {
     public class ProductHandeling
     {
