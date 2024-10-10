@@ -1,12 +1,3 @@
-KVITTO #1 - 2024-10-04 12:29:21
-Bananer 2 * 9,90 = 19,80
-Nutella 2 * 19,90 = 39,80
-Total: 59,60 kr
---------------------
-KVITTO #2 - 2024-10-04 12:35:41
-Nutella 14 * 19,90 = 278,60
-Total: 278,60 kr
---------------------
                  KOOP
  
              Lillgatan 7
@@ -17,17 +8,17 @@ Total: 278,60 kr
  
                 KVITTO
  
-Kvittonr: 3
-Datum: 2024-10-04 13:17:49
+Kvittonr: 1
+Datum: 2024-10-08 12:52:41
  
 ---------------------------------------
 Artikel       Antal   a-pris  %   Total 
 ---------------------------------------
-Citron      2     4,90    9,80
-Nutella      2     19,90    39,80
-Choklad      3     9,90    29,70
+Nutella          4 *  19,90 kr   79,60 kr
+Öresavrundning                0,40
 ---------------------------------------
-Total:                        79,30 kr
+Total:                        80,00 kr
+varav moms 12%
                  KOOP
  
              Lillgatan 7
@@ -38,14 +29,16 @@ Total:                        79,30 kr
  
                 KVITTO
  
-Kvittonr: 3
-Datum: 2024-10-04 13:23:03
+Kvittonr: 2
+Datum: 2024-10-08 15:12:56
  
 ---------------------------------------
 Artikel       Antal   a-pris  %   Total 
 ---------------------------------------
-Nutella          3   19,90  59,70
-Jordgubbar          2   39,90  79,80
-Grädde          2   15,90  31,80
+Jordgubbar       2 *  39,90 kr   79,80 kr
+Nutella          4 *  19,90 kr   79,60 kr
+Grädde           3 *  15,90 kr   47,70 kr
+Öresavrundning                -0,10
 ---------------------------------------
-Total:                        171,30 kr
+Total:                        207,00 kr
+varav moms 12%

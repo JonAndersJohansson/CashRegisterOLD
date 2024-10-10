@@ -7,59 +7,22 @@ using System.Threading.Tasks;
 
 namespace CashRegister
 {
-    public class RegisterMethods
+    public class NewCostumer
     {
-        public static void MainMenu()
+
+        public void Customer()
         {
-
-            bool menuInput = false;
-
-            while (!menuInput)
-            {
-                Console.Clear();
-
-                MenuGraphics();
-
-                Console.WriteLine("KASSA");
-                Console.WriteLine("1. Ny kund");
-                Console.WriteLine("2. Administratörsverktyg");
-                Console.WriteLine("0. Avsluta");
-
-                string input = Console.ReadLine();
-
-                switch (input)
-                {
-                    case "1":
-                        var register = new RegisterMethods();
-                        register.NewCustomer();
-                        menuInput = true;
-                        break;
-                    case "2":
-                        // Detta gör vi senare.
-                        menuInput = true;
-                        break;
-                    case "0":
-                        Environment.Exit(0);
-                        return;
-                    default:
-                        Console.WriteLine("Ogiltigt alternativ, försök igen.");
-                        Thread.Sleep(2000);  // Pausar kort innan vi rensar
-                        break;
-                }
-            }
-        }
-        public void NewCustomer()
-        {
+            Menus menus = new Menus();
             ProductHandeling producthandeling = new ProductHandeling();
             Receipt receipt = new Receipt();
-            var products = producthandeling.Products;
+            var products = producthandeling.listOfProducts;
             var cart = new List<CartItem>();
             decimal total = 0;
 
             while (true)
             {
                 Console.Clear();
-                MenuGraphics();
+                menus.MenuGraphics();
 
                 Console.WriteLine("kommandon:\n<productid> <antal>\nPAY\n");
                 string command = Console.ReadLine();
@@ -77,7 +40,8 @@ namespace CashRegister
                     Console.WriteLine();
                     receipt.DisplayReceipt(cart, products);
                     Console.ReadKey();
-                    MainMenu();
+                    Menus menu = new Menus();
+                    menu.MainMenu();
                     //break;                                //Behövs inte?
                 }
                 else
@@ -127,23 +91,5 @@ namespace CashRegister
                 cart.Add(new CartItem(product, quantity));
             }
         }
-
-        
-
-        public static void MenuGraphics()
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("██╗  ██╗ ██████╗  ██████╗ ██████╗ ");
-            Console.WriteLine("██║ ██╔╝██╔═══██╗██╔═══██╗██╔══██╗");
-            Console.WriteLine("█████╔╝ ██║   ██║██║   ██║██████╔╝");
-            Console.WriteLine("██╔═██╗ ██║   ██║██║   ██║██╔═══╝ ");
-            Console.WriteLine("██║  ██╗╚██████╔╝╚██████╔╝██║     ");
-            Console.WriteLine("╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ®  ");
-            Console.WriteLine("      ~   Örnsköldsvik   ~");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine();
-        }
-    }
-
-
+    }    
 }

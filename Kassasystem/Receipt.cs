@@ -9,8 +9,12 @@ namespace CashRegister
 {
     public class Receipt
     {
+        
         public void SaveReceipt(List<CartItem> cart, decimal total)
         {
+            //decimal momsAmount = total * 0.88;
+            decimal totalRounded = Math.Round(total, 0);
+            decimal roundedOfAmount = totalRounded - total;
             string dateString = DateTime.Now.ToString("yyyyMMdd");
             string fileName = $"RECEIPT_{dateString}.txt";
             string directoryPath = "../../../Receipts"; // Ange sökvägen
@@ -25,14 +29,39 @@ namespace CashRegister
 
             using (StreamWriter writer = new StreamWriter(filePath, true)) // 'true' för att lägga till i filen
             {
-                writer.WriteLine($"KVITTO #{receiptNumber} - {DateTime.Now}");
+                writer.WriteLine("                 KOOP");
+                writer.WriteLine(" ");
+                writer.WriteLine("             Lillgatan 7");
+                writer.WriteLine("          89242 Örnsköldsvik");
+                writer.WriteLine("           Tel: 0660-63729");
+                writer.WriteLine("           Orgnr: 5612147854");
+                writer.WriteLine("             www.koop.kom");
+                writer.WriteLine(" ");
+                writer.WriteLine("                KVITTO");
+                writer.WriteLine(" ");
+                writer.WriteLine($"Kvittonr: {receiptNumber}");
+                writer.WriteLine($"Datum: {DateTime.Now}");
+                writer.WriteLine(" ");
+                writer.WriteLine("---------------------------------------");
+                writer.WriteLine("Artikel       Antal   a-pris  %   Total ");
+                writer.WriteLine("---------------------------------------");
+                //writer.WriteLine($"KVITTO #{receiptNumber} - {DateTime.Now}");
                 foreach (var item in cart)
                 {
                     decimal lineTotal = item.Product.Price * item.Quantity;
-                    writer.WriteLine($"{item.Product.Name} {item.Quantity} * {item.Product.Price} = {lineTotal}");
+                    //writer.WriteLine($"{item.Product.Name}         {item.Quantity}     {item.Product.Price}    {lineTotal}");
+                    writer.WriteLine("{0,-15} {1,5} {2,8:C} {3,10:C}",
+                     item.Product.Name,    // Artikelnamn
+                     item.Quantity + " * ",        // Antal
+                     item.Product.Price,   // A-pris med 2 decimaler
+                     lineTotal);           // Totalpris
                 }
-                writer.WriteLine($"Total: {total:C}");
-                writer.WriteLine(new string('-', 20)); // Separerar
+                writer.WriteLine($"Öresavrundning                {roundedOfAmount}");
+
+                writer.WriteLine("---------------------------------------");
+                writer.WriteLine($"Total:                        {totalRounded:C}");
+                writer.WriteLine($"varav moms 12%");
+                //writer.WriteLine(new string('-', 20)); // Separerar
             }
         }
 
@@ -47,9 +76,9 @@ namespace CashRegister
                 var lines = File.ReadAllLines(filePath);
                 foreach (var line in lines)
                 {
-                    if (line.StartsWith("KVITTO #"))
+                    if (line.StartsWith("Kvittonr:"))
                     {
-                        var parts = line.Split('#');
+                        var parts = line.Split(':');
                         if (parts.Length > 1 && int.TryParse(parts[1].Split('-')[0].Trim(), out int receiptNum))
                         {
                             maxNumber = Math.Max(maxNumber, receiptNum);
@@ -62,8 +91,9 @@ namespace CashRegister
         }
         public void DisplayReceipt(List<CartItem> cart, List<Products> products)
         {
+            Menus menu = new Menus();
             Console.Clear();
-            RegisterMethods.MenuGraphics();
+            menu.MenuGraphics();
             decimal total = 0;
             Console.WriteLine("KÖP GENOMFÖRT\t" + DateTime.Now);
 

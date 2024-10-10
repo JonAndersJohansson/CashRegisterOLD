@@ -6,7 +6,8 @@ namespace CashRegister
     {
         public static void Main(string[] args)
         {
-            RegisterMethods.MainMenu();     // Börjar med att hämta MENY
+            Menus menu = new Menus();
+            menu.MainMenu();
         }
     }
 }

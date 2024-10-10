@@ -1,4 +1,4 @@
-11 Jordgubbar 39,90 Styckpris
+88 Jordgubbar 39,90 Styckpris
 22 Nutella 19,90 Styckpris
 33 Citron 4,90 Styckpris
 44 Bananer 9,90 Kilopris

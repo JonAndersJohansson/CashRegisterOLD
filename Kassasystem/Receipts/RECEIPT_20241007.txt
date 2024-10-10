@@ -1,0 +1,63 @@
+                 KOOP
+ 
+             Lillgatan 7
+          89242 Örnsköldsvik
+           Tel: 0660-63729
+           Orgnr: 5612147854
+             www.koop.kom
+ 
+                KVITTO
+ 
+Kvittonr: 1
+Datum: 2024-10-07 15:15:42
+ 
+---------------------------------------
+Artikel       Antal   a-pris  %   Total 
+---------------------------------------
+Nutella             5 19,90 kr   99,50 kr
+Jordgubbar          4 39,90 kr  159,60 kr
+Bananer             5  9,90 kr   49,50 kr
+---------------------------------------
+Total:                        308,60 kr
+                 KOOP
+ 
+             Lillgatan 7
+          89242 Örnsköldsvik
+           Tel: 0660-63729
+           Orgnr: 5612147854
+             www.koop.kom
+ 
+                KVITTO
+ 
+Kvittonr: 2
+Datum: 2024-10-07 15:18:00
+ 
+---------------------------------------
+Artikel       Antal   a-pris  %   Total 
+---------------------------------------
+Nutella             3 19,90 kr   59,70 kr
+Bananer             5  9,90 kr   49,50 kr
+Jordgubbar          1 39,90 kr   39,90 kr
+---------------------------------------
+Total:                        149,10 kr
+                 KOOP
+ 
+             Lillgatan 7
+          89242 Örnsköldsvik
+           Tel: 0660-63729
+           Orgnr: 5612147854
+             www.koop.kom
+ 
+                KVITTO
+ 
+Kvittonr: 3
+Datum: 2024-10-07 15:25:35
+ 
+---------------------------------------
+Artikel       Antal   a-pris  %   Total 
+---------------------------------------
+Jordgubbar       3 *  39,90 kr  119,70 kr
+Nutella          3 *  19,90 kr   59,70 kr
+Bananer          3 *   9,90 kr   29,70 kr
+---------------------------------------
+Total:                        209,10 kr
