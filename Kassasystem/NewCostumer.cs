@@ -16,6 +16,7 @@ namespace CashRegister
             ProductHandeling producthandeling = new ProductHandeling();
             Receipt receipt = new Receipt();
             var products = producthandeling.listOfProducts;
+            
             var cart = new List<CartItem>();
             decimal total = 0;
 

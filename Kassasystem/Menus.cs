@@ -43,18 +43,18 @@ namespace CashRegister
         }
         public void AdminMenu()
         {
+            ProductHandeling productHandeling = new ProductHandeling();
+
             switch (DisplayList(listAdminMenu))
             {
                 case 0:
-                    ProductHandeling productHandeling = new ProductHandeling();
                     productHandeling.ChangeProduct();
-                    Console.WriteLine("val 1");
                     break;
                 case 1:
-                    Console.WriteLine("Val 2");
+                    productHandeling.AddProduct();
                     break;
                 case 2:
-                    Console.WriteLine("Val 3");
+                    productHandeling.RemoveProduct();
                     break;
                 case 3:
                     Console.WriteLine("Val 4");
@@ -81,14 +81,14 @@ namespace CashRegister
             {
                 Console.Clear();
                 MenuGraphics();
-                if (lista is List<Products>)
-                {
-                    Console.WriteLine("Välj produkt du vill ändra och tryck Enter:");
-                }
-                else
-                {
-                    Console.WriteLine("Använd upp/ned piltangenterna och tryck Enter:");
-                }
+                //if (lista is List<Products>)
+                //{
+                //    Console.WriteLine("Välj produkt och tryck Enter:");
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Använd upp/ned piltangenterna och tryck Enter:");
+                //}
                 Console.WriteLine();
 
                 // Visa butiker och markera vald butik

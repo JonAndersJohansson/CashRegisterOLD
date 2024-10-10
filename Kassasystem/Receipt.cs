@@ -12,7 +12,8 @@ namespace CashRegister
         
         public void SaveReceipt(List<CartItem> cart, decimal total)
         {
-            //decimal momsAmount = total * 0.88;
+            decimal momsAmount = total * 0.12m;
+            momsAmount = Math.Round(momsAmount, 2);
             decimal totalRounded = Math.Round(total, 0);
             decimal roundedOfAmount = totalRounded - total;
             string dateString = DateTime.Now.ToString("yyyyMMdd");
@@ -29,13 +30,18 @@ namespace CashRegister
 
             using (StreamWriter writer = new StreamWriter(filePath, true)) // 'true' för att lägga till i filen
             {
-                writer.WriteLine("                 KOOP");
                 writer.WriteLine(" ");
-                writer.WriteLine("             Lillgatan 7");
-                writer.WriteLine("          89242 Örnsköldsvik");
-                writer.WriteLine("           Tel: 0660-63729");
-                writer.WriteLine("           Orgnr: 5612147854");
-                writer.WriteLine("             www.koop.kom");
+                writer.WriteLine("██╗  ██╗  ██████╗  ██████╗  ██████╗ ");
+                writer.WriteLine("██║ ██╔╝██╔═══██╗██╔═══██╗██╔══██╗");
+                writer.WriteLine("█████╔╝ ██║    ██║██║    ██║██████╔╝");
+                writer.WriteLine("██╔═██╗ ██║    ██║██║    ██║██╔═══╝ ");
+                writer.WriteLine("██║  ██╗╚██████╔╝╚██████╔╝██║     ");
+                writer.WriteLine("╚═╝  ╚═╝ ╚═════╝  ╚═════╝  ╚═╝  ®  ");
+                writer.WriteLine("              Lillgatan 7");
+                writer.WriteLine("           89242 Örnsköldsvik");
+                writer.WriteLine("            Tel: 0660-63729");
+                writer.WriteLine("            Orgnr: 5612147854");
+                writer.WriteLine("              www.koop.kom");
                 writer.WriteLine(" ");
                 writer.WriteLine("                KVITTO");
                 writer.WriteLine(" ");
@@ -56,12 +62,17 @@ namespace CashRegister
                      item.Product.Price,   // A-pris med 2 decimaler
                      lineTotal);           // Totalpris
                 }
-                writer.WriteLine($"Öresavrundning                {roundedOfAmount}");
+                writer.WriteLine(" ");
+                writer.WriteLine($"Öresavrundning                    {roundedOfAmount}");
 
                 writer.WriteLine("---------------------------------------");
-                writer.WriteLine($"Total:                        {totalRounded:C}");
-                writer.WriteLine($"varav moms 12%");
-                //writer.WriteLine(new string('-', 20)); // Separerar
+                writer.WriteLine($"Total:                          {totalRounded:C}");
+                writer.WriteLine($"varav moms 12%                   {momsAmount}");
+                writer.WriteLine(" ");
+                writer.WriteLine(" ");
+                writer.WriteLine("            VÄLKOMMER ÅTER");
+                writer.WriteLine(" ");
+                writer.WriteLine("~~~~~~~~~~~~~~~~RIV~AV~HÄR~~~~~~~~~~~~~~~~~");
             }
         }
 
@@ -95,7 +106,7 @@ namespace CashRegister
             Console.Clear();
             menu.MenuGraphics();
             decimal total = 0;
-            Console.WriteLine("KÖP GENOMFÖRT\t" + DateTime.Now);
+            Console.WriteLine($"KÖP GENOMFÖRT   {DateTime.Now}\n");
 
             foreach (var item in cart)
             {
